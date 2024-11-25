@@ -1,6 +1,6 @@
 import { build, emptyDir } from "https://deno.land/x/dnt/mod.ts";
 
-import package_ from "./package.json" assert { type: "json" };
+import package_ from "./package.json" with { type: "json" };
 
 await emptyDir("./npm");
 
@@ -39,6 +39,6 @@ await build({
   postBuild() {
     // post build steps
     Deno.copyFileSync("src/LICENSE", "npm/LICENSE");
-    Deno.copyFileSync("src/README.md", "npm/README.md");
+    Deno.copyFileSync("README.md", "npm/README.md");
   },
 });
